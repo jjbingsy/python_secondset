@@ -1,0 +1,27 @@
+#:kivy 1.9.0
+
+MyNewWidget:
+
+<MyNewWidget>:
+    orientation: 'vertical'
+    Carousel:
+        id: carousel1
+        on_current_slide: root.on_current_slide(self, label1)
+    Label:
+        id: label1
+        text: "heyyou!"
+        size_hint: 1, None
+        height: dp(60)
+    BoxLayout:
+        orientation: 'horizontal' 
+        size_hint: 1, None
+        height: dp(60)
+        Button:
+            text: "Load"
+            on_press: root.on_load(carousel1)
+        Button:
+            text: "Clear"
+            on_press: root.on_clear(carousel1, label1)            
+        Button:
+            text: "Run"
+            on_press: root.on_run(carousel1, label1)
