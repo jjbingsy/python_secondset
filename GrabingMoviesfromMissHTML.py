@@ -3,21 +3,35 @@ from pathlib import Path
 import re
 import shutil
 '''
-This is a Python script that copies images referenced in HTML files from a source directory to a destination directory. The script uses the Beautiful Soup library to parse the HTML files and extract the image filenames, and the shutil library to copy the image files.
+This is a Python script that copies images referenced in HTML files from a source directory to a destination directory.
+The script uses the Beautiful Soup library to parse the HTML files and extract the image filenames, and the shutil 
+library to copy the image files.
 
-The copy_movie_images function takes three arguments: source_dir, pics_dir, and dest_dir. These are the paths to the source directory containing the HTML files, the directory containing the image files, and the destination directory where the images should be copied to, respectively. The function returns a list of the names of the copied image files.
+The copy_movie_images function takes three arguments: source_dir, pics_dir, and dest_dir. These are the paths to the
+source directory containing the HTML files, the directory containing the image files, and the destination directory 
+where the images should be copied to, respectively. The function returns a list of the names of the copied image files.
 
-The function first converts the directory paths to Path objects using the pathlib library. It then initializes an empty set to keep track of the filenames of copied files.
+The function first converts the directory paths to Path objects using the pathlib library. It then initializes an empty
+set to keep track of the filenames of copied files.
 
-The function then loops through all the HTML files in the source directory using the glob method. For each file, it opens the file, parses it using Beautiful Soup, and finds all the elements with class findMovies.
+The function then loops through all the HTML files in the source directory using the glob method. For each file, it
+ opens the file, parses it using Beautiful Soup, and finds all the elements with class findMovies.
 
-For each findMovies element, the function extracts the value of the src attribute, which should contain the image filename. It then checks if the image file has already been copied by checking if the filename is in the set of copied filenames. If the file has already been copied, it skips to the next element. Otherwise, it constructs the full path to the image file using the pics_dir directory, and the full path to the destination file using the dest_dir directory. It then copies the image file to the destination directory using the shutil.copy method, and adds the filename to the set of copied filenames.
+For each findMovies element, the function extracts the value of the src attribute, which should contain the image filename.
+It then checks if the image file has already been copied by checking if the filename is in the set of copied filenames.
+If the file has already been copied, it skips to the next element. Otherwise, it constructs the full path to the image 
+file using the pics_dir directory, and the full path to the destination file using the dest_dir directory. It then copies 
+the image file to the destination directory using the shutil.copy method, and adds the filename to the set of copied filenames.
 
 Finally, the function converts the set of copied filenames to a list and returns it.
 
-The extract_alphabets_and_numbers function is a helper function that takes a string as input, searches for the first set of alphabet characters and numeric characters in the string using regular expressions, and returns a new string that concatenates the alphabet characters, a dash, and the numeric characters. If either the alphabet characters or the numeric characters are not found, the function returns an empty string.
+The extract_alphabets_and_numbers function is a helper function that takes a string as input, searches for the first set of 
+alphabet characters and numeric characters in the string using regular expressions, and returns a new string that concatenates
+the alphabet characters, a dash, and the numeric characters. If either the alphabet characters or the numeric characters are 
+not found, the function returns an empty string.
 
-The script also contains some example code that demonstrates how to use the copy_movie_images function to copy images from a single HTML file, and how to use the function to copy images from multiple directories containing HTML files.
+The script also contains some example code that demonstrates how to use the copy_movie_images function to copy images from
+a single HTML file, and how to use the function to copy images from multiple directories containing HTML files.
 '''
 def copy_movie_images(source_dir, pics_dir, dest_dir):
     # Define source, pictures, and destination paths as Path objects
